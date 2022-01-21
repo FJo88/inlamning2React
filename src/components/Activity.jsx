@@ -13,8 +13,6 @@ let radioButtons = document.querySelectorAll('input[name="participants"]');
         }
        return selectedValue;
     })}
-    console.log(selectedValue);
-    console.log(clicked);
    
     (selectedValue != 0 ? url ="http://www.boredapi.com/api/activity?participants="+selectedValue: 
     url ="http://www.boredapi.com/api/activity/")
@@ -29,7 +27,8 @@ let radioButtons = document.querySelectorAll('input[name="participants"]');
     let handleClick = () => {
         setclicked(clicked+1);
     }
-    
+    console.log(selectedValue);
+    console.log(clicked);
 return (
     <div> 
         <h2>Choose how many participants or do not choose?</h2>
@@ -53,5 +52,5 @@ return (
         <h4> You have seen {clicked } {clicked > 1 ? "activities": "activity"} </h4>
     </div>
   );
-
+    
 }
