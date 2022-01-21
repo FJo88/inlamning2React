@@ -12,8 +12,16 @@ input{
 label{
   margin-right: 30px;
 }
+.start{
+  height: 120px;
+  width: 200px;
+  color: blue;
+  background-color: lightgrey;
+}
 .button{
-  margin-bottom: 50px;
+  justify-content: center;
+  margin-bottom: 20px;
+  margin-left: 30%;
   height: 120px;
   width: 200px;
   color: blue;
@@ -26,15 +34,15 @@ label{
 .act{
   border: solid black 3px;
   padding: 15px;
-  margin-left: 35%;
-  margin-right: 35%;
+  margin-left: 30%;
+  margin-right: 30%;
   text-align: left;
 
 }
 .foot{
-
+  font-size: 5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 400px;
+  height: 600px;
 }
