@@ -5,8 +5,6 @@ import { useState, useEffect } from 'react';
 function App() {
   const [startButton, setstartButton] = useState(false);
 
-
-
   return (
     <div className="App">
       <h3>Inlämningsuppgift 2</h3>
