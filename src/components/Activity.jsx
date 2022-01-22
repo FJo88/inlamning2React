@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import axios from "axios";
+import Loading from "./Loading";
 
 export default function Activity() {
 let radioButtons = document.querySelectorAll('input[name="participants"]');
@@ -6,6 +8,7 @@ let radioButtons = document.querySelectorAll('input[name="participants"]');
     let url = "";
     const [activities, setactivities] = useState({});
     const [clicked, setclicked] = useState(1);
+    let [loading, setLoading] = useState(false);
     
     {radioButtons.forEach((button) => {
         if(button.checked){
@@ -17,15 +20,19 @@ let radioButtons = document.querySelectorAll('input[name="participants"]');
     (selectedValue != 0 ? url ="http://www.boredapi.com/api/activity?participants="+selectedValue: 
     url ="http://www.boredapi.com/api/activity/")
         
-    useEffect(
-        () =>{fetch(url)
-        .then(response => response.json())
-        .then(json => setactivities(json));
+    useEffect(() =>
+    {axios.get(url)
+        .then(response => setactivities(response.data));
+        setTimeout(() =>{
+            setLoading(true);
+        }, 3500);
+        
     },[clicked]
         );
 
     let handleClick = () => {
-        setclicked(clicked+1);
+      setclicked(clicked+1);
+      setLoading(false)
     }
     console.log(selectedValue);
     console.log(clicked);
@@ -41,15 +48,15 @@ return (
         <label htmlFor="part2">2 participants</label>
         <input type="radio" name='participants' value= "4" id='part4' />
         <label htmlFor="part4">4 participants</label>
-        </div>
+        </div> 
         <div className='act'>
             <button className='button' onClick={handleClick}>New Activity</button>
-            <h3><span>Activity:</span> {activities.activity}</h3>
-            <h3><span>Type:</span> {activities.type}</h3>
-            <h3><span>Participants:</span> {activities.participants}</h3>
+            <div>
+            {loading ? <h3><span>Activity:</span>{activities.activity}</h3>: <Loading/>}
+            {loading ? <h3><span>Type:</span> {activities.type}</h3>: <Loading/>}
+            {loading ? <h3><span>Participants:</span> {activities.participants}</h3>: <Loading/>}
+            </div> 
         </div>
-
-        <h4> You have seen {clicked } {clicked > 1 ? "activities": "activity"} </h4>
     </div>
   );
     
