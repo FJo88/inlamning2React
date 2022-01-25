@@ -1,11 +1,13 @@
 import Activity from './components/Activity';
 import './App.css';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 function App() {
   const [startButton, setstartButton] = useState(false);
 
   return (
+    // Har en startknapp för att starta applikationen. När den klickas på så försvinner den och komponenten renderas.
+    // Den första aktiviteten hämtas då.
     <div className="App">
       <h3>Inlämningsuppgift 2</h3>
       <h1>Activity Application</h1>
